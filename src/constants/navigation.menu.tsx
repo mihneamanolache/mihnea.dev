@@ -11,9 +11,9 @@ export const navbarPages: Record<string, Record<string, string>> = {
         title: "web-scraper-api",
         path: "/web-scraper-api",
     },
-    browser: {
-        title: "browser-api",
-        path: "/browser-api",
+    ip: {
+        title: "ip-to-domain",
+        path: "/ip-to-domain",
     },
     about: {
         title: "about",
