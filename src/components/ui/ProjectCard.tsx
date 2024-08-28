@@ -15,7 +15,10 @@ project.active ? "bg-tokyo-green" : "bg-tokyo-yellow"
             <div className="pb-5">
             { project.description as JSX.Element }
             </div>
-            <Link href={project.url as string} className="p-2 bg-tokyo-dark-gray"><span className="pr-2" >{ project.outbound !== undefined && project.outbound === true ? "link" : ":goto" }</span><code className="text-tokyo-purple">{project.url as string}</code></Link>
+            <div className="flex justify-between items-center">
+                <Link href={project.url as string} className="p-2 bg-tokyo-dark-gray"><span className="pr-2" >{ project.outbound !== undefined && project.outbound === true ? "link" : ":goto" }</span><code className="text-tokyo-purple">{project.url as string}</code></Link>
+                { project.git !== undefined && <Link href={project.git as string} className="text-2xl hover:text-tokyo-blue"><span className="pr-2">󰊤</span></Link> }
+            </div>
         </div>
     )
 }

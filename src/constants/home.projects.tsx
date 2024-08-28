@@ -17,7 +17,8 @@ const projects: Array<Record<string, string | JSX.Element | boolean>> = [
             </div>
         ),
         url: "/web-scraper-api",
-        active: false
+        active: false,
+        git: "#"
     },
     {
         name: "vinCheck.ro 󱆾",
@@ -28,17 +29,18 @@ const projects: Array<Record<string, string | JSX.Element | boolean>> = [
         ),
         url: "https://www.vincheck.ro",
         active: true,
-        outbound: true
+        outbound: true,
     },
     {
-    name: "browser api ",
+    name: "ip-to-domain 󰒒",
         description: (
             <div className="pb-3 space-y-2">
-                <p>Managed browserless clusters that you can use to automate web tasks. You can use it to scrape the web, test your website or automate repetitive tasks.</p>
+                <p>API that allows you to resolve an IP address to all known domain names. Source code is openly available on GitHub and you can access the API by clicking on the link below.</p>
             </div>
         ),
-        url: "/browser-api",
-        active: true
+        url: "/ip-to-domain",
+        active: false,
+        git: "#"
     }
 ];
 
