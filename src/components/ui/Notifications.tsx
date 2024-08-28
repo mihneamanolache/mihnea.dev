@@ -20,23 +20,39 @@ const Notifications = ({ tnc }: { tnc: boolean }) => {
                 ]);
                 setCurrentIndex((prevIndex) => prevIndex + 1);
 
-                // Remove notification after 5 seconds
-                setTimeout(() => {
+                // Remove notification after 7.5 seconds if not manually closed
+                const autoRemoveTimeoutId = setTimeout(() => {
                     setVisibleNotifications((prev) =>
                         prev.filter((_, index) => index !== 0)
                     );
                 }, 7500);
+
+                return () => clearTimeout(autoRemoveTimeoutId);
             }, 2000);
 
             return () => clearTimeout(timeoutId);
         }
-    }, [currentIndex]);
+    }, [currentIndex, tnc]);
+
+    const handleClose = (indexToRemove: number) => {
+        setVisibleNotifications((prev) =>
+            prev.filter((_, index) => index !== indexToRemove)
+        );
+    };
 
     return (
-        <div id="notifications" className="fixed md:opacity-70 right-0 bottom-[2vh] md:bottom-[3vh] w-full bg-tokyo-background-dark mt-4 space-y-2 md:text-right">
+        <div id="notifications" className="fixed md:opacity-70 md:bottom-[3vh] w-full bg-tokyo-background-dark space-y-0 md:text-right">
             {visibleNotifications.map((notification, index) => (
-                <div key={index} className="notification">
-                    {notification}
+                <div key={index} className="notification p-2 flex justify-between items-center">
+                    <div className="flex items-center">
+                        <span className="px-2 text-tokyo-yellow"></span>{notification}
+                    </div>
+                    <button
+                        onClick={() => handleClose(index)}
+                        className="ml-4 text-tokyo-red hover:text-red-500 transition-colors"
+                    >
+                        ✖
+                    </button>
                 </div>
             ))}
         </div>
@@ -44,3 +60,4 @@ const Notifications = ({ tnc }: { tnc: boolean }) => {
 };
 
 export default Notifications;
+

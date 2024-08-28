@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center justify-center min-h-[90vh] px-5 md:px-32 text-center">
+        <main className="flex flex-col items-center justify-center py-10 min-h-[90vh] px-5 md:px-32 text-center">
             <p className="text-lg"><span className="pr-4 text-tokyo-yellow">󱠡</span>hello, world! I&apos;m</p>
             <h1 className="text-4xl font-bold text-tokyo-blue">mihnea.manolache</h1>
             <p className="md:text-lg">building software for the community</p>

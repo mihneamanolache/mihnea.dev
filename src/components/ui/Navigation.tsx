@@ -198,7 +198,7 @@ export const Navigation = () => {
                 </div>
             </div>
             {/* Mobile navigation */}
-            <div className="fixed w-full bottom-0 z-10 flex flex-grow select-none bg-tokyo-background-dark md:hidden">
+            <div className="fixed w-full bottom-0 z-10 flex flex-grow select-none bg-tokyo-background-dark md:hidden text-xl">
                 <button onClick={() => setMenuIcon(prevIcon => (prevIcon + 1) % 2)} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
                     { menuIcons[menuIcon] } {" "} nav
                 </button>
@@ -207,8 +207,8 @@ export const Navigation = () => {
                     <div id="user-ip" className="px-2 bg-tokyo-dark-gray"><span className="pr-1">󰩠</span>{` ${ip}`}</div>
                 </div>
             </div>
-            <div className={`w-full md:block md:w-auto bottom-3 pb-5 fixed bg-tokyo-background-night md:invisible ${menuIcon === 0 ? "hidden" : ""}`}>
-                <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+            <div className={`w-full md:block md:w-auto bottom-3 pb-6 fixed bg-tokyo-background-night md:invisible ${menuIcon === 0 ? "hidden" : ""}`}>
+                <ul className="font-medium text-xl flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                     {
                         Object.keys(navbarPages).map((page, index) => (
                             <NavLink key={index} link={navbarPages[page]} path={pathname} disabled={menuIcon === 0}/>
