@@ -5,13 +5,13 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata: Metadata = {
-    title: "mihnea.manolache - software engineer",
+    title: "mihnea.dev - software engineer",
     description: "Welcome to mihnea's personal website. Here you can find information about the projects I'm working on, my blog posts and more.",
     openGraph: {
         locale: "en_US",
         type: "website",
         url: "https://mihnea.dev",
-        title: "mihnea.manolache - software engineer",
+        title: "mihnea.dev - software engineer",
         description: "Welcome to mihnea's personal website. Here you can find information about the projects I'm working on, my blog posts and more.",
     },
     authors: {
@@ -29,7 +29,7 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center justify-center py-10 min-h-[90vh] px-5 md:px-32 text-center">
             <p className="text-lg"><span className="pr-4 text-tokyo-yellow">󱠡</span>hello, world! I&apos;m</p>
-            <h1 className="text-4xl font-bold text-tokyo-blue">mihnea.manolache</h1>
+            <h1 className="text-4xl font-bold text-tokyo-blue">mihnea.dev</h1>
             <p className="md:text-lg">building software for the community</p>
             <div className="mt-10">
                 <h2 className="text-2xl font-bold text-tokyo-blue">./projects</h2>
