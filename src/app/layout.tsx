@@ -46,7 +46,7 @@ export default function RootLayout({
     }>) {
     return (
         <CookiesProvider>
-            <html lang="en">
+            <html className="dark" lang="en">
                 <body className={` ${ ubuntuNerd.className } h-screen text-xs`}>
                     <Navigation/>
                     <div className="overflow-scroll h-full pb-10">
