@@ -183,7 +183,8 @@ export const Navigation = () => {
                     {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
                     <input onKeyDown={(e) => { handleCommand(e, setResult); }} autoFocus={ true } type="search" placeholder="i.e.: help" className="px-2 w-[95%] outline-none bg-tokyo-background-storm"/>
                 </div>
-                { (result.props ? 
+                {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
+                { (result ? 
                     /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */
                     React.Children.count(result.props.children) > 0 ? 
                         <CommandBox text={result} close={setSearch}/> : <></> 
