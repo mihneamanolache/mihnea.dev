@@ -68,7 +68,7 @@ export default function MobileProxies() {
                     </div>
                 </div>
                 <div className="text-justify space-y-5 text-lg">
-                    <div className='prose prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-tokyo-blue prose-h2:text-center prose-h1:text-5xl prose-h2:text-3xl prose-h3:text-xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg prose-p:text-tokyo-white prose-li:text-tokyo-white prose-code:text-tokyo-red prose-pre:p-0 prose-a:text-tokyo-blue' >
+                    <div className='prose md:prose-p:px-0 md:prose-pre:px-0 md:prose-h2:px-0 md:prose-h3:px-0 md:prose-li:px-0 prose-p:px-20 prose-pre:px-20 prose-li:px-20 prose-h2:px-20 prose-h3:px-20 prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-tokyo-blue prose-h2:text-center prose-h1:text-5xl prose-h2:text-3xl prose-h3:text-xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg prose-p:text-tokyo-white prose-li:text-tokyo-white prose-code:text-tokyo-red prose-pre:p-0 prose-a:text-tokyo-blue px-10' >
                         <MobileProxiesContent/>
                     </div>
                 </div>
