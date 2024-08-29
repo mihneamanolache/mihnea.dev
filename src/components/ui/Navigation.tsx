@@ -15,7 +15,7 @@ const commands: Record<string, React.JSX.Element> = {
             You can use the following commands:<br/>
             - q: close the tab<br/>
             - help: display this message<br/>
-            - e/goto: navigate to a specific page<br/>
+            - e/goto/cd: navigate to a specific page<br/>
             - subscribe: subscribe to my newsletter<br/>
             <br/>
             The following keybindings are available:<br/>
@@ -40,7 +40,7 @@ const handleCommand = (event: React.FormEvent<HTMLInputElement> | React.Keyboard
         if (value === "q") {
             window.open("about:blank", "_self")?.close()
         }
-        if (value.startsWith("goto ") || value.startsWith("e ")) {
+        if (value.startsWith("goto ") || value.startsWith("e ") || value.startsWith("cd ")) {
             window.location.href = value.split(" ")[1].replace(/"/g, '');
             return;
         }

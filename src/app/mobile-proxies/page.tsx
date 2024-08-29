@@ -6,15 +6,15 @@ import MobileProxiesContent from '@/content/pages/mobile.proxies.mdx'
 import PriceCard from '@/components/misc/PriceCard';
 import HljsComponent from '@/components/misc/HljsComponent';
 
-const prices: { title: string; body: React.JSX.Element; price: string; }[] = [
+const prices: { title: string; body: React.JSX.Element; price: string; footnotes?: string[]}[] = [
     {
         title: "7 day access - shared",
         body: (
             <ul className="list-none">  
-                <li>career: <Link href="https://mobile.telekom.ro/" className="text-tokyo-green">Telekom</Link></li>
-                <li>bandwidth: <span className="text-tokyo-green">unlimited</span></li>
-                <li>protocol: <span className="text-tokyo-green">socks/http</span></li>
-                <li>location: <span className="text-tokyo-green">Romania</span></li>
+                <li>career: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="https://mobile.telekom.ro/" className="text-tokyo-green">Telekom</Link></li>
+                <li>bandwidth: &nbsp;&nbsp;<span className="text-tokyo-green">unlimited</span></li>
+                <li>protocol: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">socks/http</span></li>
+                <li>location: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">Romania</span></li>
                 <li>IP rotation: <span className="text-tokyo-green">10 min.</span></li>
             </ul>
         ),
@@ -24,10 +24,10 @@ const prices: { title: string; body: React.JSX.Element; price: string; }[] = [
         title: "28 days access - shared",
         body: (
             <ul className="list-none">  
-                <li>career: <Link href="https://mobile.telekom.ro/" className="text-tokyo-green">Telekom</Link></li>
-                <li>bandwidth: <span className="text-tokyo-green">unlimited</span></li>
-                <li>protocol: <span className="text-tokyo-green">socks/http</span></li>
-                <li>location: <span className="text-tokyo-green">Romania</span></li>
+                <li>career: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link href="https://mobile.telekom.ro/" className="text-tokyo-green">Telekom</Link></li>
+                <li>bandwidth: &nbsp;&nbsp;<span className="text-tokyo-green">unlimited</span></li>
+                <li>protocol: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">socks/http</span></li>
+                <li>location: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">Romania</span></li>
                 <li>IP rotation: <span className="text-tokyo-green">10 min.</span></li>
             </ul>
         ),
@@ -38,17 +38,19 @@ const prices: { title: string; body: React.JSX.Element; price: string; }[] = [
         body: (
             <>
                 <ul className="list-none">  
-                    <li>career: <span className="text-tokyo-green">ANY</span>*</li>
-                    <li>bandwidth: <span className="text-tokyo-green">TBD</span>**</li>
-                    <li>protocol: <span className="text-tokyo-green">socks/http</span></li>
-                    <li>location: <span className="text-tokyo-green">Romania</span></li>
+                    <li>career: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">ANY</span>*</li>
+                    <li>bandwidth: &nbsp;&nbsp;<span className="text-tokyo-green">TBD</span>**</li>
+                    <li>protocol: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">socks/http</span></li>
+                    <li>location: &nbsp;&nbsp;&nbsp;<span className="text-tokyo-green">Romania</span></li>
                     <li>IP rotation: <span className="text-tokyo-green">CUSTOM</span></li>
                 </ul>
-                <p className="text-xs text-tokyo-comment mt-2">*Orange/Telekom/Digi/Vodafone</p>
-                <p className="text-xs text-tokyo-comment">**Depends on the chosen career.</p>
             </>
         ),
-        price: "starts at €55"
+        price: "starts at €50",
+        footnotes: [
+            "*Orange/Telekom/Digi/Vodafone",
+            "**Depends on the chosen career."
+        ]
     },
 ];
 
@@ -56,24 +58,23 @@ export default function MobileProxies() {
     return (
         <HljsComponent>
             <main className="flex flex-col items-center justify-center min-h-[90vh] mt-8 px-5 md:px-5 text-center">
+                <div className="not-prose">
                 <p className="text-lg"><span className="pr-4 text-tokyo-yellow">󰒢</span>web scraping tools</p>
                 <h1 className="text-4xl font-bold text-tokyo-blue">4g mobile proxies</h1>
                 <p className="md:text-lg">hosted by <Link className="text-tokyo-blue" href="/">mihnea.dev</Link> for other developers</p>
                 <div className="text-lg mt-8 md:px-32">
                     <h2 className="text-3xl font-bold text-tokyo-blue">./pricing</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 my-4">
                         { prices.map((price, index) => (
-                            <PriceCard key={index} title={price.title} body={price.body} price={price.price}/>
+                            <PriceCard key={index} title={price.title} body={price.body} price={price.price} footnotes={price.footnotes}/>
                         )) }
                     </div>
                 </div>
-                <div className="text-justify space-y-5 text-lg">
-                    <div className='prose md:prose-p:px-0 md:prose-pre:px-0 md:prose-h2:px-0 md:prose-h3:px-0 md:prose-li:px-0 prose-p:px-20 prose-pre:px-20 prose-li:px-20 prose-h2:px-20 prose-h3:px-20 prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-tokyo-blue prose-h2:text-center prose-h1:text-5xl prose-h2:text-3xl prose-h3:text-xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg prose-p:text-tokyo-white prose-li:text-tokyo-white prose-code:text-tokyo-red prose-pre:p-0 prose-a:text-tokyo-blue px-10' >
-                        <MobileProxiesContent/>
-                    </div>
+                </div>
+                <div className='prose max-w-[80vw] md:max-w-[50vw] dark:prose-invert prose-headings:text-center prose-headings:text-tokyo-blue text-justify space-y-5 text-lg prose-pre:max-w-[50vh] prose-code:overflow-hidden prose-pre:p-0 prose-pre:m-0 prose-code:p-0 prose-code:m-0 prose-code:max-v-[50vh]' >
+                    <MobileProxiesContent/>
                 </div>
             </main>
         </HljsComponent>
     )
 }
-
