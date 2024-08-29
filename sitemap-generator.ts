@@ -2,6 +2,7 @@ import { readdir } from "node:fs/promises";
 
 const URL = "https://www.mihnea.dev/";
 
+/* @ts-expect-error await */
 const files = await readdir(import.meta.dir + "/src/app");
 const dirs = files.filter(f => !f.includes('.'));
 
