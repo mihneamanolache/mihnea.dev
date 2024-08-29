@@ -12,20 +12,21 @@ import { handleNewsletterSubmit } from '@/helpers/forms/newsletter';
 const commands: Record<string, JSX.Element> = {
     "help": (
         <pre>
-        You can use the following commands:<br/>
+            You can use the following commands:<br/>
+            - q: close the tab<br/>
             - help: display this message<br/>
-        - e/goto: navigate to a specific page<br/>
-        - subscribe: subscribe to my newsletter<br/>
-        <br/>
-        The following keybindings are available:<br/>
+            - e/goto: navigate to a specific page<br/>
+            - subscribe: subscribe to my newsletter<br/>
+            <br/>
+            The following keybindings are available:<br/>
             - ctrl + b: toggle menu icon<br/>
             - ctrl + h: navigate to previous page<br/>
             - ctrl + l: navigate to next page<br/>
-            - shift + : (colon): toggle search<br/>
+            - shift + : (colon): toggle command line<br/>
             - escape: close search
         </pre>
     ),
-            "subscribe": (
+    "subscribe": (
         <form className="space-x-2" onSubmit={(e) => handleNewsletterSubmit(e)}>
             <input type="email" placeholder="email" name="email" className="bg-gray-800 w-[30vh] text-gray-300 p-2" required />
             <button type="submit" className="bg-tokyo-blue text-tokyo-background-night p-2">SUBSCRIBE</button>
@@ -36,6 +37,9 @@ const commands: Record<string, JSX.Element> = {
 const handleCommand = (event: React.FormEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>, r: React.Dispatch<React.SetStateAction<JSX.Element>>) => {
     if ((event as React.KeyboardEvent<HTMLInputElement>).key === 'Enter') {
         const value = (event as React.ChangeEvent<HTMLInputElement>).target.value;
+        if (value === "q") {
+            window.open("about:blank", "_self")?.close()
+        }
         if (value.startsWith("goto ") || value.startsWith("e ")) {
             window.location.href = value.split(" ")[1].replace(/"/g, '');
             return;
@@ -79,7 +83,7 @@ export const Navigation = () => {
     const tncCookie = cookieStore.get('tnc');
 
     const pathname = usePathname();
-   
+
     const [search, setSearch] = useState<boolean>(false);
     const [result, setResult] = useState<JSX.Element>(<></>);
     const [menuIcon, setMenuIcon] = useState<number>(0);
@@ -98,7 +102,6 @@ export const Navigation = () => {
         };
         const getIPFromWebRtc = async (): Promise<void> => {
             if ( ipCookie !== undefined ) return;
-            console.log("oaie")
             const pc = new RTCPeerConnection({ iceServers: [] });
             const noop = () => {}; 
             pc.createDataChannel('');
@@ -172,8 +175,8 @@ export const Navigation = () => {
                     <input onKeyDown={(e) => handleCommand(e, setResult)} autoFocus={true} type="search" placeholder="i.e.: help" className="px-2 w-[95%] outline-none bg-tokyo-background-storm"/>
                 </div>
                 { (result.props ? 
-                     React.Children.count(result.props.children) > 0 ? <CommandBox text={result} close={setSearch}/> : <></> 
-                     : <CommandBox text={(<>command not found</>)} close={setSearch}/>)
+                    React.Children.count(result.props.children) > 0 ? <CommandBox text={result} close={setSearch}/> : <></> 
+                    : <CommandBox text={(<>command not found</>)} close={setSearch}/>)
                 }
             </>
         )
