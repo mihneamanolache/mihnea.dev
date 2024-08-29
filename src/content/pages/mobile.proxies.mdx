@@ -1,0 +1,79 @@
+export const metadata = {
+  title: "My first MDX blog post",
+  description: "A short MDX blog post.",
+};
+
+## how to order a mobile proxy?
+You can click on the buy buttons above to discover my contact details. Just shoot me an email or a message on you platform of choice, and I will get back to you as soon as possible. I accept most payment methods, including PayPal, Bitcoin, and bank transfer.
+
+## what is a mobile proxy?
+
+If you're on this page, I am quite sure you already know what a 4g mobile proxy is. However, if you don't, here is a brief explanation.
+
+In general, a proxy is a server that acts as an intermediary between your device and the internet. When you use a proxy, your device connects to the proxy server, and the proxy server connects to the internet. This way, the website you're visiting sees the proxy server's IP address instead of your device's IP address.
+
+In particular, a mobile proxy is a proxy server that uses a mobile IP address. This means that when you use a mobile proxy, the website you're visiting sees the IP address of a mobile device instead of a residential IP address.
+
+## why use a mobile proxy?
+
+There are numerous reasons why you might want to use a mobile proxy. For example, I myself use them for web scraping purposes. Mobile proxies are great for web scraping because they are less likely to get blocked by websites than residential proxies. This is because websites are more likely to trust mobile IP addresses than residential IP addresses. 
+
+Another reason you might want to use a mobile proxy is to access geo-restricted content. For example, if you're in the US and you want to watch a video that is only available in Europe, you can use a romanian mobile proxy to access the video.
+
+## how to use a mobile proxy?
+
+Using a mobile proxy really depends on your use case. For example, I use proxies in three ways:
+
+1. with `curl` - whenever I quickly need to thest if a proxy works, I use `curl` to make a request through the proxy:\
+```bash
+curl -x http://$username:$password@$proxy.mihnea.dev:$port https://www.google.com
+```
+
+2. with [playwright](https://playwright.dev/) - I mostly use playwright for browser automation, and I use mobile proxies with playwright like this:
+```ts
+try {
+    const browser: Browser = await chromium.launchPersistentContext("./tmp", {
+        headless: true,
+        proxy: {
+            server: 'http://proxy.mihnea.dev:$port',
+            username: '$username',
+            password: '$password',
+        },
+
+    });
+    const page: Page = await browser.newPage();
+    await page.goto(url);
+} catch (e: unknwon) { ... }
+```
+
+3. with [nst browser](https://www.nstbrowser.io/en) - an anti-detect browser I use for various social media projects.
+
+## wht buy my mobile proxies?
+
+I have been using mobile proxies for a while now, and I have tried many providers. I have found that most providers are either too expensive or too unreliable. That's why I decided to start my own mobile proxy service. I have been using my own mobile proxies for a while now, and I have found them to be both reliable and affordable. I hope you will find them to be the same.
+
+## faq about mobile proxies
+
+I knwo you might have some questions about mobile proxies, so I will try to answer some of them here. (also, if you have any other questions, feel free to ask me)
+
+### 1. are mobile proxies legal?
+Yes, using mobile proxies is legal. However, you should be aware that using mobile proxies to access geo-restricted content might violate the terms of service of the website you're visiting.
+
+### 2. are mobile proxies safe?
+For scraping purposese, yes, they're safe. However, you should be aware that using mobile proxies to access sensitive information might expose you to security risks.
+
+### 3. where do your mobile proxies come from?
+I have a network of mobile devices that I use to create mobile proxies. I host the devices in Romania, and I use them to create mobile proxies.
+
+### 4. how many mobile proxies do you have?
+I have a few dozen mobile proxies at the moment, but I am constantly adding more. If you need a large IP pool, I don't think I can help you though.
+
+### 5. do you have a free trial?
+Yes, I do. If you want to try out my mobile proxies, just send me an email at [mihnea.dev@gmail.com](mailto:mihnea.dev@gmail.com) or ping me on [telegram](https://t.me/a_x_b_y_c_z).
+
+### 6. are your proxies rotating?
+We can discuss this. I can set up a rotating proxy for you if you need one, or I can set up a static proxy if you prefer that. Just let me know what you need and I will do my best to accommodate you.
+
+### 7. are the proxies shared or dedicated?
+I offer both shared and dedicated mobile proxies. Shared proxies are cheaper, but they are shared with other users. Dedicated proxies are more expensive, but they are dedicated to you.
+

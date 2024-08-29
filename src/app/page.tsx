@@ -7,22 +7,6 @@ import React from "react";
 export const metadata: Metadata = {
     title: "mihnea.dev - software engineer",
     description: "Welcome to mihnea's personal website. Here you can find information about the projects I'm working on, my blog posts and more.",
-    openGraph: {
-        locale: "en_US",
-        type: "website",
-        url: "https://mihnea.dev",
-        title: "mihnea.dev - software engineer",
-        description: "Welcome to mihnea's personal website. Here you can find information about the projects I'm working on, my blog posts and more.",
-    },
-    authors: {
-        name: "Mihnea Manolache",
-        url: "https://mihnea.dev",
-    },
-    keywords: ["software engineer", "web scraping", "web development", "mobile proxies", "mihnea manolache"],
-    robots: {
-        follow: true,
-        index: true,
-    },
 };
 
 export default function Home() {

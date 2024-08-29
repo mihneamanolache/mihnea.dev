@@ -1,7 +1,13 @@
 import React from 'react'
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 const technologies: Array<string> = ["󰛦", "", "", "", ""];
+
+export const metadata: Metadata = {
+    title: "mihnea.dev - software engineer",
+    description: "Welcome to mihnea's personal website. Here you can find information about the projects I'm working on, my blog posts and more.",
+};
 
 export default function About() {
     return (

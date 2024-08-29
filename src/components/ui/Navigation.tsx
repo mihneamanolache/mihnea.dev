@@ -198,13 +198,13 @@ export const Navigation = () => {
                 </div>
             </div>
             {/* Mobile navigation */}
-            <div className="fixed w-full bottom-0 z-10 flex flex-grow select-none bg-tokyo-background-dark md:hidden text-xl">
+            <div className="fixed w-full bottom-0 z-10 flex flex-grow select-none bg-tokyo-background-storm md:hidden text-xl">
                 <button onClick={() => setMenuIcon(prevIcon => (prevIcon + 1) % 2)} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
                     { menuIcons[menuIcon] } {" "} nav
                 </button>
 
                 <div className="flex bg-tokyo-background-storm absolute right-0">
-                    <div id="user-ip" className="px-2 bg-tokyo-dark-gray"><span className="pr-1">󰩠</span>{` ${ip}`}</div>
+                    <div id="user-ip" className="px-2 bg-tokyo-dark-storm"><span className="pr-1">󰩠</span>{` ${ip}`}</div>
                 </div>
             </div>
             <div className={`w-full md:block md:w-auto bottom-3 pb-6 fixed bg-tokyo-background-night md:invisible ${menuIcon === 0 ? "hidden" : ""}`}>
