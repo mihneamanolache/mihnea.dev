@@ -4,6 +4,7 @@ import { Navigation } from "@/components/ui/Navigation";
 import { CookiesProvider } from 'next-client-cookies/server';
 import "highlight.js/styles/tokyo-night-dark.css";
 import { Metadata } from "next";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
     openGraph: {
@@ -53,6 +54,7 @@ export default function RootLayout({
                         {children}
                     </div>
                 </body>
+             <GoogleAnalytics gaId="G-MTDV3EEFF4" />
             </html>
         </CookiesProvider>
     );
