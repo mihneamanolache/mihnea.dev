@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
-const technologies: Array<string> = ["󰛦", "", "", "", ""];
+const technologies: string[] = ["󰛦", "", "", "", ""];
 
 export const metadata: Metadata = {
     title: "mihnea.dev - software engineer",

@@ -1,4 +1,6 @@
-const projects: Array<Record<string, string | JSX.Element | boolean>> = [
+import type { IProject } from "@/types/misc";
+
+const projects: IProject[] = [
     {
         name: "4g mobile proxies ",
         description: (

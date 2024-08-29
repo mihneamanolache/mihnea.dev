@@ -23,15 +23,22 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
+    "@next/eslint-plugin-next": "^14.2.7",
     "@tailwindcss/typography": "^0.5.15",
     "@types/bun": "^1.1.8",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.6",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "9",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-unicorn": "^55.0.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "5.0.4",
+    "typescript-eslint": "^8.3.0"
   }
 }

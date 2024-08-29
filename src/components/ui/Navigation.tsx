@@ -9,7 +9,7 @@ import { menuIcons, navbarPages } from '@/constants/navigation.menu';
 import { getNextMenuItem } from '@/helpers/misc/navigation.handlers';
 import { handleNewsletterSubmit } from '@/helpers/forms/newsletter';
 
-const commands: Record<string, JSX.Element> = {
+const commands: Record<string, React.JSX.Element> = { 
     "help": (
         <pre>
             You can use the following commands:<br/>
@@ -27,14 +27,14 @@ const commands: Record<string, JSX.Element> = {
         </pre>
     ),
     "subscribe": (
-        <form className="space-x-2" onSubmit={(e) => handleNewsletterSubmit(e)}>
+        <form className="space-x-2" onSubmit={(e) => { handleNewsletterSubmit(e); }}>
             <input type="email" placeholder="email" name="email" className="bg-gray-800 w-[30vh] text-gray-300 p-2" required />
             <button type="submit" className="bg-tokyo-blue text-tokyo-background-night p-2">SUBSCRIBE</button>
         </form>
     ),
 };
 
-const handleCommand = (event: React.FormEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>, r: React.Dispatch<React.SetStateAction<JSX.Element>>) => {
+const handleCommand = (event: React.FormEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>, r: React.Dispatch<React.SetStateAction<React.JSX.Element>>) => {
     if ((event as React.KeyboardEvent<HTMLInputElement>).key === 'Enter') {
         const value = (event as React.ChangeEvent<HTMLInputElement>).target.value;
         if (value === "q") {
@@ -44,11 +44,11 @@ const handleCommand = (event: React.FormEvent<HTMLInputElement> | React.Keyboard
             window.location.href = value.split(" ")[1].replace(/"/g, '');
             return;
         }
-        r(commands[value] || "command not found");
+        r(commands[value]);
     } 
 };
 
-const CommandBox = ({text, close}: {text: JSX.Element, close: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const CommandBox = ({text, close}: {text: React.JSX.Element, close: React.Dispatch<React.SetStateAction<boolean>>}) => {
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-70 z-50 flex justify-center items-center">
             <div className="flex h-screen">
@@ -58,7 +58,7 @@ const CommandBox = ({text, close}: {text: JSX.Element, close: React.Dispatch<Rea
                             { text }
                         </div>
                         <div className="flex mt-1">
-                            <button onClick={() => close(false)} className="flex-1 text-sm text-center rounded-bl-lg border-t border-r border-gray-700 p-2">CLOSE</button>
+                            <button onClick={() => { close(false); }} className="flex-1 text-sm text-center rounded-bl-lg border-t border-r border-gray-700 p-2">CLOSE</button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export const Navigation = () => {
     const pathname = usePathname();
 
     const [search, setSearch] = useState<boolean>(false);
-    const [result, setResult] = useState<JSX.Element>(<></>);
+    const [result, setResult] = useState<React.JSX.Element>(<></>);
     const [menuIcon, setMenuIcon] = useState<number>(0);
     const [ip, setIp] = useState<string | undefined>(ipCookie);
 
@@ -93,17 +93,19 @@ export const Navigation = () => {
         const getIP = async (): Promise<void> => {
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
+                const data: { ip: string } = await response.json() as { ip: string };
                 cookieStore.set('ip', data.ip, { expires: new Date(Date.now() + 1000 * 60 * 5)});
                 setIp(data.ip);
             } catch {
                 setIp('What are you hiding?');
             }
         };
-        const getIPFromWebRtc = async (): Promise<void> => {
+        const getIPFromWebRtc = (): void => {
             if ( ipCookie !== undefined ) return;
             const pc = new RTCPeerConnection({ iceServers: [] });
-            const noop = () => {}; 
+            const noop = () => {
+            /* blank */
+            }; 
             pc.createDataChannel('');
             pc.createOffer()
                 .then(offer => pc.setLocalDescription(offer))
@@ -111,12 +113,18 @@ export const Navigation = () => {
             pc.onicecandidate = (event) => {
                 if (event.candidate && event.candidate.candidate) {
                     const candidate = event.candidate.candidate;
-                    const ipMatch = candidate.match(/(\d{1,3}\.){3}\d{1,3}/); 
+                    const ipMatch = /(\d{1,3}\.){3}\d{1,3}/.exec(candidate); 
                     if (ipMatch) {
                         cookieStore.set('ip', ipMatch[0], { expires: new Date(Date.now() + 1000 * 60 * 5)});
                         setIp(ipMatch[0]);
                     } else {
-                        getIP();
+                        getIP()
+                            .then(() => {
+                                /* blank */
+                            })
+                            .catch((e: unknown) => {
+                                console.error('Failed to get IP:', e);
+                            });
                     }
                 }
             };
@@ -125,7 +133,7 @@ export const Navigation = () => {
                 cookieStore.set('tnc', 'true', { expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) });
             }, 10000); 
         };
-        getIPFromWebRtc();
+        getIPFromWebRtc()
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.shiftKey && event.key === ":") {
                 event.preventDefault();
@@ -172,10 +180,13 @@ export const Navigation = () => {
                     <div className="px-2 bg-tokyo-orange text-tokyo-background-night font-bold">
                         
                     </div>
-                    <input onKeyDown={(e) => handleCommand(e, setResult)} autoFocus={true} type="search" placeholder="i.e.: help" className="px-2 w-[95%] outline-none bg-tokyo-background-storm"/>
+                    {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+                    <input onKeyDown={(e) => { handleCommand(e, setResult); }} autoFocus={ true } type="search" placeholder="i.e.: help" className="px-2 w-[95%] outline-none bg-tokyo-background-storm"/>
                 </div>
                 { (result.props ? 
-                    React.Children.count(result.props.children) > 0 ? <CommandBox text={result} close={setSearch}/> : <></> 
+                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */
+                    React.Children.count(result.props.children) > 0 ? 
+                        <CommandBox text={result} close={setSearch}/> : <></> 
                     : <CommandBox text={(<>command not found</>)} close={setSearch}/>)
                 }
             </>
@@ -186,7 +197,7 @@ export const Navigation = () => {
         <>
             {/* Desktop navigation */}
             <div className="fixed w-full bottom-0 z-10 flex select-none bg-tokyo-background-dark invisible md:visible">
-                <button onClick={() => setMenuIcon(prevIcon => (prevIcon + 1) % 2)} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
+                <button onClick={() => { setMenuIcon(prevIcon => (prevIcon + 1) % 2); }} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
                     { menuIcons[menuIcon] } {" "} nav
                 </button>
                 {
@@ -197,17 +208,17 @@ export const Navigation = () => {
                 <Link href="https://github.com/mihneamanolache" className={`md:block hidden bg-tokyo-teal px-2 text-tokyo-background-night ${menuIcon === 0 ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''}`}>󰊤 mihneamanolache</Link>
                 <div className="flex bg-tokyo-background-storm absolute right-0">
                     <div className="px-2 text-tokyo-comment hidden md:block">~{ pathname }</div>
-                    <div id="user-ip" className="px-2 bg-tokyo-dark-gray"><span className="pr-1">󰩠</span>{` ${ip}`}</div>
+                    <div id="user-ip" className="px-2 bg-tokyo-dark-gray"><span className="pr-1">󰩠</span>{ ip ?? "" }</div>
                 </div>
             </div>
             {/* Mobile navigation */}
             <div className="fixed w-full bottom-0 z-10 flex flex-grow select-none bg-tokyo-background-storm md:hidden text-xl">
-                <button onClick={() => setMenuIcon(prevIcon => (prevIcon + 1) % 2)} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
+                <button onClick={() => { setMenuIcon(prevIcon => (prevIcon + 1) % 2); }} className="px-2 bg-tokyo-blue text-tokyo-background-night font-bold">
                     { menuIcons[menuIcon] } {" "} nav
                 </button>
 
                 <div className="flex bg-tokyo-background-storm absolute right-0">
-                    <div id="user-ip" className="px-2 bg-tokyo-dark-storm"><span className="pr-1">󰩠</span>{` ${ip}`}</div>
+                    <div id="user-ip" className="px-2 bg-tokyo-dark-storm"><span className="pr-1">󰩠</span>{ ip ?? "" }</div>
                 </div>
             </div>
             <div className={`w-full md:block md:w-auto bottom-3 pb-6 fixed bg-tokyo-background-night md:invisible ${menuIcon === 0 ? "hidden" : ""}`}>

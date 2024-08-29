@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const oneTimeNotifications: Array<JSX.Element> = [
+const oneTimeNotifications: React.JSX.Element[] = [
     (<p key={2}>This site uses <span className="text-tokyo-blue font-bold">cookies</span> to improve your experience. By using this site you agree to the use of cookies.</p>),
     (<p key={1}><span className="bg-tokyo-yellow text-tokyo-background-night px-1 font-bold">PRO TIP:</span> Use the <code className="text-tokyo-purple">:help</code> command and navigate this site using keybindings.</p>),
     (<p key={2}>I recommend using a <span className="text-tokyo-blue font-bold">desktop</span> for the best experience.</p>),
 ];
 
 const Notifications = ({ tnc }: { tnc: boolean }) => {
-    const [visibleNotifications, setVisibleNotifications] = useState<Array<JSX.Element>>([]);
+    const [visibleNotifications, setVisibleNotifications] = useState<React.JSX.Element[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -27,10 +27,10 @@ const Notifications = ({ tnc }: { tnc: boolean }) => {
                     );
                 }, 7500);
 
-                return () => clearTimeout(autoRemoveTimeoutId);
+                return () => { clearTimeout(autoRemoveTimeoutId); };
             }, 2000);
 
-            return () => clearTimeout(timeoutId);
+            return () => { clearTimeout(timeoutId); };
         }
     }, [currentIndex, tnc]);
 
@@ -48,7 +48,7 @@ const Notifications = ({ tnc }: { tnc: boolean }) => {
                         <span className="px-2 text-tokyo-yellow"></span>{notification}
                     </div>
                     <button
-                        onClick={() => handleClose(index)}
+                        onClick={() => { handleClose(index); }}
                         className="ml-4 text-tokyo-red hover:text-red-500 transition-colors"
                     >
                         ✖

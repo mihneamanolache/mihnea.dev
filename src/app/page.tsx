@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ui/ProjectCard";
 import projects from "@/constants/home.projects";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 

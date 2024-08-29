@@ -1,8 +1,6 @@
 import { readdir } from "node:fs/promises";
-
 const URL = "https://www.mihnea.dev/";
-
-/* @ts-expect-error await */
+/* @ts-expect-error: Top-level */
 const files = await readdir(import.meta.dir + "/src/app");
 const dirs = files.filter(f => !f.includes('.'));
 
@@ -12,5 +10,5 @@ const res = dirs.map(dir => ({
     changeFrequency: 'monthly',
     priority: 0.8,
 }));
-
-Bun.write("./src/constants//sitemap-pages.tsx", `export default ${JSON.stringify(res, null, 2)}`);
+/* @ts-expect-error: Top-level */
+await Bun.write("./src/constants//sitemap-pages.tsx", `export default ${JSON.stringify(res, null, 2)}`);

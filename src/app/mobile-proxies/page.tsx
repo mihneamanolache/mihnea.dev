@@ -6,7 +6,7 @@ import MobileProxiesContent from '@/content/pages/mobile.proxies.mdx'
 import PriceCard from '@/components/misc/PriceCard';
 import HljsComponent from '@/components/misc/HljsComponent';
 
-const prices: Array<{ title: string; body: JSX.Element; price: string; }> = [
+const prices: { title: string; body: React.JSX.Element; price: string; }[] = [
     {
         title: "7 day access - shared",
         body: (
