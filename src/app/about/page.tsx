@@ -15,7 +15,7 @@ export default function About() {
             <p className="text-lg"><span className="pr-4 text-tokyo-yellow">󱠡</span>hello, world! I&apos;m</p>
             <h1 className="text-4xl font-bold text-tokyo-blue">mihnea.dev</h1>
             <p className="md:text-lg">and here are some of the technologies I work with:</p>
-            <div className="md:text-6xl space-x-10 mt-4">
+            <div className="md:text-6xl text-3xl space-x-10 mt-4">
                 { technologies.map((technology, index) => (
                     <span key={index}>{technology}</span>
                 ))}
