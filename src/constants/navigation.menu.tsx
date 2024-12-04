@@ -7,17 +7,17 @@ export const navbarPages: Record<string, Record<string, string>> = {
         title: "proxies",
         path: "/mobile-proxies"
     },
-    scraper: {
-        title: "web-scraper-api",
-        path: "/web-scraper-api",
-    },
-    ip: {
-        title: "ip-to-domain",
-        path: "/ip-to-domain",
+    keylogger: {
+        title: "keylogger.js",
+        path: "/keylogger-js",
     },
     about: {
         title: "about",
         path: "/about",
+    },
+    scraper: {
+        title: "web-scraper-api",
+        path: "/web-scraper-api",
     },
 };
 

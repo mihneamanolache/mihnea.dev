@@ -12,15 +12,15 @@ const projects: IProject[] = [
         active: true
     },
     {
-        name: "web scraper api 󱂛",
+        name: "Keylogger.js 🖦",
         description: (
             <div className="pb-3 space-y-2">
-                <p>API that allows you to scrape the web without worrying about proxies, captchas or rate limits. You can use it to scrape data from any website and it supports JavaScript rendering.</p>
+                <p>A lightweight JavaScript keylogger for ethical hacking, penetration testing, and security research. The keylogger is open source and you can find the source code on GitHub.</p>
             </div>
         ),
-        url: "/web-scraper-api",
-        active: false,
-        git: "#"
+        url: "/keylogger-js",
+        active: true,
+        git: "https://github.com/mihneamanolache/keylogger.js"
     },
     {
         name: "vinCheck.ro 󱆾",
@@ -34,16 +34,17 @@ const projects: IProject[] = [
         outbound: true,
     },
     {
-    name: "ip-to-domain 󰒒",
+        name: "web scraper api 󱂛",
         description: (
             <div className="pb-3 space-y-2">
-                <p>API that allows you to resolve an IP address to all known domain names. Source code is openly available on GitHub and you can access the API by clicking on the link below.</p>
+                <p>API that allows you to scrape the web without worrying about proxies, captchas or rate limits. You can use it to scrape data from any website and it supports JavaScript rendering.</p>
             </div>
         ),
-        url: "/ip-to-domain",
+        url: "/web-scraper-api",
         active: false,
         git: "#"
-    }
+    },
+
 ];
 
 export default projects;
