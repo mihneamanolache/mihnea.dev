@@ -71,7 +71,7 @@ export default function MobileProxies() {
                     </div>
                 </div>
                 </div>
-                <div className='prose max-w-[80vw] md:max-w-[50vw] dark:prose-invert prose-headings:text-center prose-headings:text-tokyo-blue text-justify space-y-5 text-lg prose-pre:max-w-[50vh] prose-code:overflow-hidden prose-pre:p-0 prose-pre:m-0 prose-code:p-0 prose-code:m-0 prose-code:max-v-[50vh]' >
+                <div className='prose max-w-[80vw] md:max-w-[50vw] dark:prose-invert prose-headings:text-center prose-headings:text-tokyo-blue text-justify space-y-5 text-lg prose-pre:max-w-[100vh] prose-code:overflow-hidden prose-pre:p-0 prose-pre:m-0 prose-code:p-0 prose-code:m-0 prose-code:max-v-[100vh]' >
                     <MobileProxiesContent/>
                 </div>
             </main>
